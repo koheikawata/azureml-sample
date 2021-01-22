@@ -12,6 +12,7 @@
       },
         "workspaceName": {
           "type": "string",
+          "defaultValue": "[concat('mlw', toLower(parameters('baseName')))]",
           "metadata": {
             "description": "Specifies the name of the Azure Machine Learning workspace."
           }
@@ -64,7 +65,7 @@
         },
         "storageAccountName": {
           "type": "string",
-          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlsa')]"
+          "defaultValue": "[concat('mlwsa', toLower(parameters('baseName')))]"
         },
         "storageAccountType": {
           "type": "string",
@@ -97,7 +98,7 @@
         },
         "keyVaultName": {
           "type": "string",
-          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlkv')]"
+          "defaultValue": "[concat('mlwkv', toLower(parameters('baseName')))]"
         },
         "keyVaultResourceGroupName": {
           "type": "string",
@@ -113,7 +114,7 @@
         },
         "applicationInsightsName": {
           "type": "string",
-          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlai')]"
+          "defaultValue": "[concat('mlwai', toLower(parameters('baseName')))]"
         },
         "applicationInsightsResourceGroupName": {
           "type": "string",
