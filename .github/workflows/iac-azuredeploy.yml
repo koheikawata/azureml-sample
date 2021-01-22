@@ -1,0 +1,13 @@
+name: Iac-AzureDeploy
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: whiteducksoftware/azure-arm-action@v3.2
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resourceGroupName: rg-azureml-sample
+          templateLocation: environment_setup/azure-deploy.json
+          parameters: environment_setup/azuredeploy.parameters.json
+          deploymentName: rg-azureml-sample
