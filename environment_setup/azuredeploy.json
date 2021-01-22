@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "baseName": {
+      "baseName": {
         "type": "string",
         "maxLength": 10,
         "minLength": 3,
@@ -10,166 +10,170 @@
           "description": "The base name to use as prefix to create all the resources."
         }
       },
-        "workspaceName": {
-          "type": "string",
-          "defaultValue": "[concat('mlw', toLower(parameters('baseName')))]",
-          "metadata": {
-            "description": "Specifies the name of the Azure Machine Learning workspace."
-          }
-        },
-        "location": {
-          "type": "string",
-          "allowedValues": [
-            "australiaeast",
-            "brazilsouth",
-            "canadacentral",
-            "centralus",
-            "eastasia",
-            "eastus",
-            "eastus2",
-            "francecentral",
-            "japaneast",
-            "koreacentral",
-            "northcentralus",
-            "northeurope",
-            "southeastasia",
-            "southcentralus",
-            "uksouth",
-            "westcentralus",
-            "westus",
-            "westus2",
-            "westeurope"
-          ],
-          "metadata": {
-            "description": "Specifies the location for all resources."
-          }
-        },
-        "sku": {
-          "type": "string",
-          "defaultValue": "basic",
-          "allowedValues": [
-            "basic",
-            "enterprise"
-          ],
-          "metadata": {
-            "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
-          }
-        },
-        "storageAccountNewOrExisting": {
-          "type": "string",
-          "defaultValue": "new",
-          "allowedValues": [
-            "new",
-            "existing"
-          ]
-        },
-        "storageAccountName": {
-          "type": "string",
-          "defaultValue": "[concat('mlwsa', toLower(parameters('baseName')))]"
-        },
-        "storageAccountType": {
-          "type": "string",
-          "defaultValue": "Standard_LRS",
-          "allowedValues": [
-            "Standard_LRS",
-            "Standard_GRS",
-            "Standard_RAGRS",
-            "Standard_ZRS",
-            "Premium_LRS",
-            "Premium_ZRS",
-            "Standard_GZRS",
-            "Standard_RAGZRS"
-          ]
-        },
-        "storageAccountResourceGroupName": {
-          "type": "string",
-          "defaultValue": "[resourceGroup().name]"
-        },
-        "keyVaultNewOrExisting": {
-          "type": "string",
-          "defaultValue": "new",
-          "allowedValues": [
-            "new",
-            "existing"
-          ],
-          "metadata": {
-            "description": "Determines whether or not a key vault should be provisioned."
-          }
-        },
-        "keyVaultName": {
-          "type": "string",
-          "defaultValue": "[concat('mlwkv', toLower(parameters('baseName')))]"
-        },
-        "keyVaultResourceGroupName": {
-          "type": "string",
-          "defaultValue": "[resourceGroup().name]"
-        },
-        "applicationInsightsNewOrExisting": {
-          "type": "string",
-          "defaultValue": "new",
-          "allowedValues": [
-            "new",
-            "existing"
-          ]
-        },
-        "applicationInsightsName": {
-          "type": "string",
-          "defaultValue": "[concat('mlwai', toLower(parameters('baseName')))]"
-        },
-        "applicationInsightsResourceGroupName": {
-          "type": "string",
-          "defaultValue": "[resourceGroup().name]"
-        },
-        "containerRegistry": {
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-            "description": "The container registry resource id if you want to create a link to the workspace."
-          }
-        },
-         "adbWorkspace": {
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-            "description": "Azure Databrick workspace resource id to be linked to the workspace"
-          }
-        },
-        "confidential_data":{
-          "type": "string",
-          "defaultValue": "false",
-            "allowedValues": [
-              "false",
-              "true"
-            ],
-            "metadata": {
-              "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
-            }
-        },
-        "encryption_status":{
-          "type": "string",
-          "defaultValue": "Disabled",
-            "allowedValues": [
-              "Enabled",
-              "Disabled"
-            ],
-            "metadata": {
-              "description": "Specifies if the Azure Machine Learning workspace should be encrypted with customer managed key."
-            }
-        },
-        "cmk_keyvault":{
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-            "description": "Specifies the customer managed keyVault arm id."
-          }
-        },
-        "resource_cmk_uri":{
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-            "description": "Specifies if the customer managed keyvault key uri."
-          }
+      "workspaceName": {
+        "type": "string",
+        "defaultValue": "[concat('mlw', toLower(parameters('baseName')))]",
+        "metadata": {
+          "description": "Specifies the name of the Azure Machine Learning workspace."
         }
+      },
+      "location": {
+        "type": "string",
+        "allowedValues": [
+          "australiaeast",
+          "brazilsouth",
+          "canadacentral",
+          "centralus",
+          "eastasia",
+          "eastus",
+          "eastus2",
+          "francecentral",
+          "japaneast",
+          "koreacentral",
+          "northcentralus",
+          "northeurope",
+          "southeastasia",
+          "southcentralus",
+          "uksouth",
+          "westcentralus",
+          "westus",
+          "westus2",
+          "westeurope"
+        ],
+        "metadata": {
+          "description": "Specifies the location for all resources."
+        }
+      },
+      "sku": {
+        "type": "string",
+        "defaultValue": "basic",
+        "allowedValues": [
+          "basic",
+          "enterprise"
+        ],
+        "metadata": {
+          "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
+        }
+      },
+      "storageAccountNewOrExisting": {
+        "type": "string",
+        "defaultValue": "new",
+        "allowedValues": [
+          "new",
+          "existing"
+        ]
+      },
+      "storageAccountName": {
+        "type": "string",
+        "defaultValue": "[concat('mlwsa', toLower(parameters('baseName')))]"
+      },
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_LRS",
+        "allowedValues": [
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Standard_ZRS",
+          "Premium_LRS",
+          "Premium_ZRS",
+          "Standard_GZRS",
+          "Standard_RAGZRS"
+        ]
+      },
+      "storageAccountResourceGroupName": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().name]"
+      },
+      "keyVaultNewOrExisting": {
+        "type": "string",
+        "defaultValue": "new",
+        "allowedValues": [
+          "new",
+          "existing"
+        ],
+        "metadata": {
+          "description": "Determines whether or not a key vault should be provisioned."
+        }
+      },
+      "keyVaultName": {
+        "type": "string",
+        "defaultValue": "[concat('mlwkv', toLower(parameters('baseName')))]"
+      },
+      "keyVaultResourceGroupName": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().name]"
+      },
+      "applicationInsightsNewOrExisting": {
+        "type": "string",
+        "defaultValue": "new",
+        "allowedValues": [
+          "new",
+          "existing"
+        ]
+      },
+      "applicationInsightsName": {
+        "type": "string",
+        "defaultValue": "[concat('mlwai', toLower(parameters('baseName')))]"
+      },
+      "applicationInsightsResourceGroupName": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().name]"
+      },
+      "containerRegistry": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "The container registry resource id if you want to create a link to the workspace."
+        }
+      },
+        "adbWorkspace": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "Azure Databrick workspace resource id to be linked to the workspace"
+        }
+      },
+      "confidential_data":{
+        "type": "string",
+        "defaultValue": "false",
+          "allowedValues": [
+            "false",
+            "true"
+          ],
+          "metadata": {
+            "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
+          }
+      },
+      "encryption_status":{
+        "type": "string",
+        "defaultValue": "Disabled",
+          "allowedValues": [
+            "Enabled",
+            "Disabled"
+          ],
+          "metadata": {
+            "description": "Specifies if the Azure Machine Learning workspace should be encrypted with customer managed key."
+          }
+      },
+      "cmk_keyvault":{
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "Specifies the customer managed keyVault arm id."
+        }
+      },
+      "resource_cmk_uri":{
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "Specifies if the customer managed keyvault key uri."
+        }
+      },
+      "acr_name": {
+          "type": "string",
+          "defaultValue": "[concat('acr', toLower(parameters('baseName')))]"
+      }
     },
     "variables": {
         "tenantId": "[subscription().tenantId]",
@@ -261,6 +265,36 @@
                     }
                 },
                 "hbiWorkspace": "[parameters('confidential_data')]"
+            }
+        },
+        {
+            "type": "Microsoft.ContainerRegistry/registries",
+            "apiVersion": "2019-05-01",
+            "name": "[parameters('acr_name')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard"
+            },
+            "properties": {
+                "adminUserEnabled": true,
+                "policies": {
+                    "quarantinePolicy": {
+                        "status": "disabled"
+                    },
+                    "trustPolicy": {
+                        "type": "Notary",
+                        "status": "disabled"
+                    },
+                    "retentionPolicy": {
+                        "days": 7,
+                        "status": "disabled"
+                    }
+                },
+                "encryption": {
+                    "status": "disabled"
+                },
+                "dataEndpointEnabled": false,
+                "publicNetworkAccess": "Enabled"
             }
         }
     ]
