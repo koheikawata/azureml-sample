@@ -17,7 +17,6 @@ steps:
       templateLocation: "Linked artifact"
       csmFile: "$(Build.SourcesDirectory)/environment_setup/azuredeploy.json"
       csmParametersFile: "$(Build.SourcesDirectory)/environment_setup/azuredeploy.parameters.json"
-      overrideParameters: "-tenant_id $(TENANT_ID)"
       deploymentMode: "Incremental"
     env:
       TENANT_ID: $(TENANT_ID)
