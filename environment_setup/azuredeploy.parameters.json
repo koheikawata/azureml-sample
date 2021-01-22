@@ -5,9 +5,6 @@
       "workspaceName": {
         "value": "mlw-sample"
       },
-      "location": {
-          "value": "japaneast"
-      },
       "sku": {
         "value": "basic"
       }

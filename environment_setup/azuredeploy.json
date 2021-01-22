@@ -2,6 +2,14 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "baseName": {
+        "type": "string",
+        "maxLength": 10,
+        "minLength": 3,
+        "metadata": {
+          "description": "The base name to use as prefix to create all the resources."
+        }
+      },
         "workspaceName": {
           "type": "string",
           "metadata": {
@@ -56,7 +64,7 @@
         },
         "storageAccountName": {
           "type": "string",
-          "defaultValue": "[concat('sa',uniqueString(resourceGroup().id))]"
+          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlsa')]"
         },
         "storageAccountType": {
           "type": "string",
@@ -89,7 +97,7 @@
         },
         "keyVaultName": {
           "type": "string",
-          "defaultValue": "[concat('kv',uniqueString(resourceGroup().id))]"
+          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlkv')]"
         },
         "keyVaultResourceGroupName": {
           "type": "string",
@@ -105,7 +113,7 @@
         },
         "applicationInsightsName": {
           "type": "string",
-          "defaultValue": "[concat('ai',uniqueString(resourceGroup().id))]"
+          "defaultValue": "[concat(toLower(parameters('baseName')), 'amlai')]"
         },
         "applicationInsightsResourceGroupName": {
           "type": "string",
