@@ -1,0 +1,24 @@
+pr: none
+trigger: none
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+- template: ./iac-variables.yml
+- group: "$(PIPELINE_VARIABLE_GROUP)"
+
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: "$(AZURE_RM_SVC_CONNECTION)"
+    action: "Create Or Update Resource Group"
+    resourceGroupName: "$(RESOURCE_GROUP)"
+    location: $(LOCATION)
+    templateLocation: "Linked artifact"
+    csmFile: "$(Build.SourcesDirectory)/environment_setup/azuredeploy.json"
+    overrideParameters: "-tenant_id $(TENANT_ID)"
+    deploymentMode: "Incremental"
+  env:
+    TENANT_ID: $(TENANT_ID)
+  displayName: "Deploy Azure ML resources"
+
