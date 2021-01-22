@@ -17,7 +17,7 @@ steps:
       templateLocation: "Linked artifact"
       csmFile: "$(Build.SourcesDirectory)/environment_setup/azuredeploy.json"
       csmParametersFile: "$(Build.SourcesDirectory)/environment_setup/azuredeploy.parameters.json"
-      overrideParameters: "-basename $(BASE_NAME) -location $(LOCATION)"
+      overrideParameters: "-baseName $(BASE_NAME) -location $(LOCATION)"
       deploymentMode: "Incremental"
     displayName: "Deploy Azure ML resources"
 
